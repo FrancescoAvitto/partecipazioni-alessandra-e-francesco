@@ -370,14 +370,27 @@
         >
         Se lo volete, potete contribuire a rendere il nostro viaggio di vita insieme indimenticabile.
         </p>
-        <p
-          class="fs-nunito-sans text-xl sm:text-2xl mx-auto pt-3"
-          data-aos="fade-right"
-          data-aos-duration="2400"
-          data-aos-easing="ease-in-out"
-          data-aos-once="true"
-        >
-        IBAN <b>IT17L0760104000001021250517</b></p>
+        <div class="block sm:inline-flex">
+          <p
+            class="fs-nunito-sans text-[1.2rem] sm:text-2xl mx-auto pt-3"
+            data-aos="fade-right"
+            data-aos-duration="2400"
+            data-aos-easing="ease-in-out"
+            data-aos-once="true"
+          >
+          IBAN <b id="iban">IT17L0760104000001021250517</b></p>
+          <div class="overflow-hidden py-3 px-0 sm:py-0 sm:px-3">
+            <div class="hover:scale-[1.20] transition duration-200 max-w-[100vw] ">
+  
+              <img data-aos="fade-right"
+              data-aos-duration="2400"
+              data-aos-easing="ease-in-out"
+              data-aos-once="true" class="inline h-6 cursor-pointer transition duration-300 text-black mt-0 sm:mt-3" onclick="copyToClipboard()" data-copiable-text="IT17L0760104000001021250517" src="./media/icon/copy.svg" alt="">
+            </div>
+
+          </div>
+</div>
+     
         <p
         class="fs-nunito-sans text-2xl mx-auto pb-3"
         data-aos="fade-right"
@@ -386,6 +399,10 @@
         data-aos-once="true"
       >
        intestato ad <br class="block sm:hidden"> <b> Avitto Francesco</b></p>
+       <div class="overflow-hidden ">
+         <p class="opacity-0 fs-nunito-sans italic" id="copy-message">IBAN copiato con successo!</p>
+
+       </div>
    
       </div>
     </div>
@@ -577,6 +594,20 @@
       sliders.forEach((slider) => {
         observer.observe(slider);
       });
+    </script>
+          <script>
+            function copyToClipboard() {
+                let ibanText = document.getElementById('iban').innerText;
+                navigator.clipboard.writeText(ibanText.toUpperCase()).then(() => {
+                  let message = document.getElementById('copy-message');
+                    message.style.opacity = '1';
+                 
+                    setTimeout(() => {
+                        message.style.opacity = '0';
+                    }, 5000);            }).catch(err => {
+                    console.error('Errore nella copia del testo: ', err);
+                });
+            }
     </script>
   </body>
 </html>
